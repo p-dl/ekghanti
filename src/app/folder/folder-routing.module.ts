@@ -1,12 +1,38 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../core/guards';
+import { NoImplementationComponent } from '../shared/components';
 
 import { FolderPage } from './folder.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FolderPage
+    component: FolderPage,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      },
+      {
+        path: 'dashboard',
+        loadChildren: () => import('../pages/dashboard/dashboard.module').then(m => m.DashboardModule),
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard]
+      },
+      {
+        path: 'tickets',
+        loadChildren: () => import('../pages/ticket/ticket.module').then(m => m.TicketModule),
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard]
+      },
+      {
+        path: '**',
+        component: NoImplementationComponent
+      }
+    ]
   }
 ];
 
@@ -14,4 +40,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class FolderPageRoutingModule {}
+export class FolderPageRoutingModule { }

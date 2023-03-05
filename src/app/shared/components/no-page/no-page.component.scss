@@ -1,0 +1,11 @@
+.no-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+  font-size: 1.5rem;
+  color: var(--ion-color-dark);
+  font-weight: var(--ion-font-weight-semibold);
+  min-height: 100vh;
+}
