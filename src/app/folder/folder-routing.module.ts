@@ -23,13 +23,13 @@ const routes: Routes = [
         canActivateChild: [AuthGuard]
       },
       {
-        path: 'tickets',
+        path: 'ticket',
         loadChildren: () => import('../pages/ticket/ticket.module').then(m => m.TicketModule),
         canActivate: [AuthGuard],
         canActivateChild: [AuthGuard]
       },
       {
-        path: '**',
+        path: ':id',
         component: NoImplementationComponent
       }
     ]

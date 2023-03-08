@@ -31,17 +31,17 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 }
 
 @Injectable({
-    providedIn: 'root'
-  })
-  export class LoginGuard implements CanActivate {
-    constructor(private router: Router) {
-    }
-  
-    canActivate(route: ActivatedRouteSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (!AuthStateService.authUser.value.isLoggedIn) {
-        return true;
-      }
-      this.router.navigate(['/']).then();
-      return false;
-    }
+  providedIn: 'root'
+})
+export class LoginGuard implements CanActivate {
+  constructor(private router: Router) {
   }
+
+  canActivate(route: ActivatedRouteSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (!AuthStateService.authUser.value.isLoggedIn) {
+      return true;
+    }
+    this.router.navigate(['/']).then();
+    return false;
+  }
+}

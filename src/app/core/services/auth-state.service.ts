@@ -10,7 +10,4 @@ export class AuthStateService {
   static authUser = new BehaviorSubject<AuthState>({isLoggedIn: true});
   constructor() {
   }
-  static onLogout() {
-    AuthStateService.authUser.next({isLoggedIn: false});
-  }
 }

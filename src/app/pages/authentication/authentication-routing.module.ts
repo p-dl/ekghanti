@@ -1,13 +1,13 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { LoginComponent } from './components';
+import { LoginPage } from './components';
 import { LoginGuard } from "../../core/guards";
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: LoginPage,
     canActivate: [LoginGuard]
   }
 ];

@@ -1,10 +1,22 @@
 <ion-content>
   <div class="no-page">
     <div class="ion-text-center">
-      <p>Sorry, the page you are looking for is not available!</p>
-      <p>This is no-implementation page</p>
-      <ion-button (click)="onGoBack()" size="small">Go Back</ion-button>
+      <ng-container *ngIf="!show404">
+        <p>Sorry, the page <b>"{{ folder }}"</b> you are looking for, is not implemented yet!</p>
+        <p>Here are the list of implemented pages:</p>
+        <ul>
+          <li routerLink="/dashboard">
+            <button>Goto <b>Dashboard</b></button>
+          </li>
+          <li routerLink="/ticket">
+            <button>Goto <b>Ticket</b></button>
+          </li>
+        </ul>
+      </ng-container>
+      <ng-container *ngIf="show404">
+        <p>Sorry, <b>"{{ folder }}"</b> doesn't exist in this application.</p>
+        <ion-button (click)="onGoBack()" size="small">Go Back</ion-button>
+      </ng-container>
     </div>
-
   </div>
 </ion-content>

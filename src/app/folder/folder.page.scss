@@ -1,3 +1,24 @@
 ion-menu-button {
   color: var(--ion-color-primary);
 }
+
+ul {
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  list-style: none;
+}
+
+li {
+  padding-left: 15px;
+}
+
+ul li a {
+  display: -webkit-flex;
+  display: flex;
+  border-radius: 5px;
+  color: var(--ion-text-color);
+  background-color: var(--ion-color-background);
+}

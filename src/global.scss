@@ -24,3 +24,42 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.error-message {
+    display: none;
+    font-size: small;
+    color: var(--ion-color-danger);
+}
+
+.ng-submitted .error-message {
+    display: block;
+}
+
+.one-space {
+    padding-left: 5px;
+}
+
+.active {
+    ion-icon {
+        color: var(--ion-color-primary);
+    }
+
+    ion-label {
+        color: var(--ion-color-primary) !important;
+    }
+}
+
+ion-icon {
+    pointer-events: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ion-split-pane {
+    --side-max-width: 230px;
+    --side-min-width: 230px;
+}

@@ -1,54 +1,42 @@
-export const horizontalNavigations = [
-    {
-        label: 'admin',
-        icon: '',
-        path: ''
-    },
-    {
-        label: 'Logout',
-        icon: '',
-        path: '',
-    },
-]
 export const verticalNavigations = [
     {
         label: 'Main dashboard',
-        icon: '',
-        path: ''
+        icon: 'speedometer',
+        path: 'dashboard'
     },
     {
         label: 'User',
-        icon: '',
-        path: '',
+        icon: 'person',
+        path: 'user',
     },
     {
         label: 'Groups',
-        icon: '',
-        path: '',
+        icon: 'people',
+        path: 'groups',
     },
     {
         label: 'Project',
-        icon: '',
-        path: '',
+        icon: 'calendar',
+        path: 'project',
     },
     {
         label: 'Ticket Status',
-        icon: '',
-        path: '',
+        icon: 'hourglass',
+        path: 'ticket-status',
     },
     {
         label: 'Role',
-        icon: '',
-        path: ''
+        icon: 'ribbon',
+        path: 'role'
     },
     {
         label: 'Ticket',
-        icon: '',
-        path: '',
+        icon: 'ticket',
+        path: 'ticket',
     },
     {
         label: 'SMS/Email',
-        icon: '',
-        path: '',
+        icon: 'chatbubbles',
+        path: 'message',
     },
 ]

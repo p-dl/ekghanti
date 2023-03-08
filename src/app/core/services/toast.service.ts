@@ -15,13 +15,13 @@ export  class ToastService {
   constructor(public toastCtrl: ToastController) {
   }
 
-   async toast(message: string, type: 'success' | 'info' | 'error') {
+   async show(message: string, type: 'success' | 'info' | 'error') {
 
     const toast = await this.toastCtrl.create({
       message,
       color: COLOR_MAP[type],
       animated: true,
-      duration: 3000
+      duration: 2500
     });
     await toast.present();
   }
