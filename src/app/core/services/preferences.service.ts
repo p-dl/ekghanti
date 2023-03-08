@@ -36,7 +36,6 @@ export class PreferencesService {
     };
     static async getTickets(): Promise<Ticket[]> {
       const state = await Preferences.get({ key: 'ticketStorage' });
-      console.log(JSON.parse(state.value??'[]'));
-      return JSON.parse(state.value??'[]');
+      return JSON.parse(state.value?.length? state.value:'[]');
     }
   }
