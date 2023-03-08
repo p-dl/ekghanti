@@ -24,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     RouterModule,
     NoImplementationComponent,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ]
 })
 export class SharedModule { }

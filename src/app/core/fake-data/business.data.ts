@@ -1,4 +1,4 @@
-export const dashboardInfo = { 
+export const dashboardInfo = {
     imePay: 834,
     imeRemit: {
         urgent: 400,
@@ -11,4 +11,9 @@ export const dashboardInfo = {
         closedCallNotConnected: 21
     }
 };
-export const asignees = ['Ekghanti', 'Sapana Sharma', 'Anil Tharu', 'Ozone Maharjan'];
+export const assignees = ['Ekghanti', 'Sapana Sharma', 'Anil Tharu', 'Ozone Maharjan'];
+export const assignedBy = ['Sakar Phuyal',
+    'Sujeek Kumar Gupta',
+    'Ujjwal Sapkota',
+    'MT Kiran Bishwo',
+    'Human Resource Officer- Ekghanti Services'];

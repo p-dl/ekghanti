@@ -1,0 +1,96 @@
+<ion-content>
+    <form #formElement (submit)="onSubmit($event)" [formGroup]="selectOptionsForm">
+        <div style="display:flex;justify-content: flex-end;">
+            <ion-button shape="round" type="submit">ADD
+                NEW TICKET
+            </ion-button>
+        </div>
+        <div class="container">
+            <ion-item>
+                <ion-label>Assigned By:</ion-label>
+                <ion-select interface="popover" formControlName="assignedBy" placeholder="---">
+                    <ion-select-option *ngFor="let harek of assignedBy" [value]="harek">{{harek}}
+                    </ion-select-option>
+                </ion-select>
+                <ion-text class="error-message" *ngIf="selectOptionsForm.controls['assignedBy'].errors">Assigner is
+                    required.</ion-text>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Group:</ion-label>
+                <ion-input formControlName="group" type="text"></ion-input>
+                <ion-text class="error-message" *ngIf="selectOptionsForm.controls['group'].errors">
+                    Group is required.</ion-text>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Assigned To</ion-label>
+                <ion-select interface="popover" [multiple]="true" formControlName="assignedTo" placeholder="---">
+                    <ion-select-option *ngFor="let harek of assignees" [value]="harek">{{harek}}
+                    </ion-select-option>
+                </ion-select>
+                <ion-text class="error-message" *ngIf="selectOptionsForm.controls['assignedTo'].errors">Asignee is
+                    required.</ion-text>
+            </ion-item>
+            <ion-item>
+                <ion-label>Project:</ion-label>
+                <ion-select interface="popover" formControlName="project" placeholder="Select Project">
+                    <ion-select-option value="Isuzu">Isuzu</ion-select-option>
+                    <ion-select-option value="Aprilia">Aprilia</ion-select-option>
+                    <ion-select-option value="Vespa">Vespa</ion-select-option>
+                    <ion-select-option value="Worldlink">Worldlink</ion-select-option>
+                </ion-select>
+                <ion-text class="error-message" *ngIf="selectOptionsForm.controls['project'].errors">Please select
+                    project.</ion-text>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Vertical</ion-label>
+                <ion-input formControlName="vertical" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Sub-Vertical</ion-label>
+                <ion-input formControlName="subVertical" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Ticket Status:</ion-label>
+                <ion-input formControlName="ticketStatus" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">From</ion-label>
+                <ion-input formControlName="from" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">To</ion-label>
+                <ion-input formControlName="to" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Customer Number</ion-label>
+                <ion-input formControlName="customerNumber" type="string"></ion-input>
+                <ion-text class="error-message" *ngIf="selectOptionsForm.controls['customerNumber'].errors">Please enter phone number.</ion-text>
+            </ion-item>
+            <ion-button color="warning" (click)="onClearAllTickets()">Clear all</ion-button>
+        </div>
+    </form>
+    <div class="table-container">
+        <table *ngIf="ths.length">
+            <thead>
+                <tr>
+                    <th *ngFor="let th of ths">{{th}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of tableItems | async">
+                    <td>{{item.id}}</td>
+                    <td>{{item.assignedBy}}</td>
+                    <td>{{item.group}}</td>
+                    <td>{{item.assignedTo}}</td>
+                    <td>{{item.project}}</td>
+                    <td>{{item.vertical}}</td>
+                    <td>{{item.subVertical}}</td>
+                    <td>{{item.ticketStatus}}</td>
+                    <td>{{item.from}}</td>
+                    <td>{{item.to}}</td>
+                    <td>{{item.customerNumber}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ion-content>

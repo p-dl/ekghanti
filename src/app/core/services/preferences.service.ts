@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
+import { Ticket } from '../interfaces/ticket.interface';
 import { AppStateService } from './app-state.service';
 
 @Injectable({
@@ -19,7 +20,23 @@ export class PreferencesService {
     });
     AppStateService.username$.next(name);
   };
-  static async removeAll() {
-    await Preferences.clear();
+  static async removeAllTickets() {
+    await Preferences.set({
+      key: 'ticketStorage',
+      value: `${[]}`,
+    });
+    AppStateService.ticketState$.next([]);
   }
-}
+  static async addNewTicket(ticket:Ticket) {
+    AppStateService.ticketState$.value.push(ticket)
+      await Preferences.set({
+        key: 'ticketStorage',
+        value: `${JSON.stringify(AppStateService.ticketState$.value)}`,
+      });
+    };
+    static async getTickets(): Promise<Ticket[]> {
+      const state = await Preferences.get({ key: 'ticketStorage' });
+      console.log(JSON.parse(state.value??'[]'));
+      return JSON.parse(state.value??'[]');
+    }
+  }
