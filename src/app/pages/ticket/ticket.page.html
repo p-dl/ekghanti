@@ -54,31 +54,45 @@
                 <ion-input formControlName="ticketStatus" type="text"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label position="floating">From</ion-label>
-                <ion-input formControlName="from" type="text"></ion-input>
+                <ion-label>From</ion-label>
+                <ion-datetime-button datetime="from"></ion-datetime-button>
+                <ion-modal [keepContentsMounted]="true">
+                    <ng-template>
+                        <ion-datetime id="from" presentation="date" formControlName="from"></ion-datetime>
+                    </ng-template>
+                </ion-modal>
             </ion-item>
             <ion-item>
-                <ion-label position="floating">To</ion-label>
-                <ion-input formControlName="to" type="text"></ion-input>
+                <ion-label>To</ion-label>
+                <ion-datetime-button datetime="to"></ion-datetime-button>
+                <ion-modal [keepContentsMounted]="true">
+                    <ng-template>
+                        <ion-datetime id="to" presentation="date" formControlName="to"></ion-datetime>
+                    </ng-template>
+                </ion-modal>
             </ion-item>
             <ion-item>
                 <ion-label position="floating">Customer Number</ion-label>
                 <ion-input formControlName="customerNumber" type="string"></ion-input>
                 <ion-text class="error-message" *ngIf="selectOptionsForm.controls['customerNumber'].errors">Please enter phone number.</ion-text>
             </ion-item>
-            <ion-button color="warning" (click)="onClearAllTickets()">Clear all</ion-button>
+            <ion-item>
+                <ion-button (click)="onExport()" color="tertiary" shape="round" type="button">Export</ion-button>
+                <ion-button type="button" shape="round" color="warning" (click)="onClearAllTickets()">Clear all</ion-button>
+            </ion-item>
         </div>
     </form>
     <div class="table-container">
-        <table *ngIf="ths.length">
+        <table #tableElement>
             <thead>
-                <tr>
+                <tr *ngIf="ths.length">
+                    <th>id</th>
                     <th *ngFor="let th of ths">{{th}}</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of tableItems | async">
-                    <td>{{item.id}}</td>
+                <tr *ngFor="let item of tableItems | async; let i=index">
+                    <td>{{i+1}}</td>
                     <td>{{item.assignedBy}}</td>
                     <td>{{item.group}}</td>
                     <td>{{item.assignedTo}}</td>

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../core/guards';
 import { NoImplementationComponent } from '../shared/components';
-
 import { FolderPage } from './folder.page';
 
 const routes: Routes = [
